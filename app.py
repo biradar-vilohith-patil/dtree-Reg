@@ -34,7 +34,7 @@ st.markdown("<br>", unsafe_allow_html=True)
 
 if st.button("Calculate Market Value"):
     user_data = {
-        'brand': brand,
+        'name': brand,
         'year': year,
         'km_driven': mileage,
         'fuel': fuel,

@@ -11,7 +11,7 @@ def train_and_save_model(data_path, models_dir):
     print("Loading cleaned car dataset...")
     df = pd.read_csv(data_path)
     
-    X = df[['brand', 'year', 'km_driven', 'fuel', 'transmission']]
+    X = df[['name', 'year', 'km_driven', 'fuel', 'transmission']]
     y = df['selling_price']
 
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
@@ -21,7 +21,7 @@ def train_and_save_model(data_path, models_dir):
         transformers=[
             ('num', 'passthrough', ['year', 'km_driven']),
             # handle_unknown='ignore' prevents crashes if a user enters a weird car brand later
-            ('cat', OneHotEncoder(handle_unknown='ignore'), ['brand', 'fuel', 'transmission'])
+            ('cat', OneHotEncoder(handle_unknown='ignore'), ['name', 'fuel', 'transmission'])
         ])
 
     pipeline = Pipeline(steps=[
