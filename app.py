@@ -25,9 +25,7 @@ with col1:
     fuel = st.selectbox("Fuel Type", ["Petrol", "Diesel", "Hybrid", "Electric"])
 
 with col2:
-    # Instead of an arbitrary slider, let them type the exact mileage or use a sensible slider
-    mileage = st.number_input("Odometer (Miles/Km Driven)", min_value=0, max_value=300000, value=50000, step=1000)
-    
+    mileage = st.number_input("Odometer (Km Driven)", min_value=0, max_value=500000, value=0, step=1000)
     transmission = st.radio("Transmission", ["Automatic", "Manual"], horizontal=True)
 
 st.markdown("<br>", unsafe_allow_html=True)
@@ -44,6 +42,5 @@ if st.button("Calculate Market Value"):
     predicted_price = run_inference(user_data)
     
     # Display the result like a premium financial tool
-    st.success(f"### 💰 Estimated Fair Market Value\n# **${predicted_price:,.2f}**")
-    
+    st.success(f"### 💰 Estimated Fair Market Value\n# **₹{predicted_price:,.2f}**")    
     st.info("💡 **Negotiation Tip:** If a dealer is asking for more than 10% above this price, ask them to justify the markup with service records or a certified warranty.")
